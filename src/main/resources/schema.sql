@@ -25,6 +25,7 @@ create table student (
 
 create table credentials (
   user_id int not null,
+  openid varchar(200) not null unique,
   username varchar(50) not null unique,
   password varchar(20) not null,
   enabled tinyint not null,

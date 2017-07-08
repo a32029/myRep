@@ -4,6 +4,7 @@ import org.springframework.hateoas.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import pt.isel.daw.app.openid.UserInfo;
 import pt.isel.daw.business.dto.*;
 import pt.isel.daw.business.entities.AuthenticatedUserEntity;
 import pt.isel.daw.business.interfaces.ConstantService;
@@ -241,13 +242,23 @@ public class ContainerFactory {
 
     //------------------------------------------------------------------------------------------------------------------
 
-    public static String getAuthenticatedUser() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return auth.getName(); //get logged in username
+    public static String getAuthenticatedUser(JdbcTemplate jt) {
+        String username = "login";
+        try {
+            UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            username = CredentialRepository.getOpenIdUsername(jt, userInfo.getId());
+            System.out.println(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        return auth.getName(); //get logged in username
+        return username;
     }
 
     public static Resource getAuthenticatedUser(JdbcTemplate jt, ConstantService constantService) {
-        String username = getAuthenticatedUser();
+        String username = getAuthenticatedUser(jt);
         AuthenticatedUserEntity authenticatedUserEntity = CredentialRepository.getAuthenticatedUserInfo(jt, username);
         AuthenticatedUserDTO authenticatedUserDTO = DTOFactory.convertToDto(authenticatedUserEntity);
 

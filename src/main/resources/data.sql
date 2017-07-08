@@ -44,27 +44,27 @@ insert into student (user_id, student_id) values
 (18, 'A00009'),
 (19, 'A00010');
 
-insert into credentials (user_id, username, password, enabled) values
-(0, 'u0_t0_admin', 'u0_t0_admin', 1),
-(1, 'u1_t1_admin', 'u1_t1_admin', 1),
-(2, 'u2_t2_admin', 'u2_t2_admin', 1),
-(3, 'u3_t3_user', 'u3_t3_user', 1),
-(4, 'u4_t4_user', 'u4_t4_user', 1),
-(5, 'u5_t5_user', 'u5_t5_user', 1),
-(6, 'u6_t6_user', 'u6_t6_user', 1),
-(7, 'u7_t7_user', 'u7_t7_user', 1),
-(8, 'u8_t8_user', 'u8_t8_user', 1),
-(9, 'u9_t9_user', 'u9_t9_user', 1),
-(10, 'u0_s0_user', 'u0_s0_user', 1),
-(11, 'u1_s1_user', 'u1_s1_user', 1),
-(12, 'u2_s2_user', 'u2_s2_user', 1),
-(13, 'u3_s3_user', 'u3_s3_user', 1),
-(14, 'u4_s4_user', 'u4_s4_user', 1),
-(15, 'u5_s5_user', 'u5_s5_user', 1),
-(16, 'u6_s6_user', 'u6_s6_user', 1),
-(17, 'u7_s7_user', 'u7_s7_user', 1),
-(18, 'u8_s8_user', 'u8_s8_user', 1),
-(19, 'u9_s9_user', 'u9_s9_user', 1);
+insert into credentials (user_id, openid, username, password, enabled) values
+(0, '116110254597972482396', 'u0_t0_admin', 'u0_t0_admin', 1),
+(1, '1', 'u1_t1_admin', 'u1_t1_admin', 1),
+(2, '2', 'u2_t2_admin', 'u2_t2_admin', 1),
+(3, '3', 'u3_t3_user', 'u3_t3_user', 1),
+(4, '4', 'u4_t4_user', 'u4_t4_user', 1),
+(5, '5', 'u5_t5_user', 'u5_t5_user', 1),
+(6, '6', 'u6_t6_user', 'u6_t6_user', 1),
+(7, '7', 'u7_t7_user', 'u7_t7_user', 1),
+(8, '8', 'u8_t8_user', 'u8_t8_user', 1),
+(9, '9', 'u9_t9_user', 'u9_t9_user', 1),
+(10, '10', 'u0_s0_user', 'u0_s0_user', 1),
+(11, '11', 'u1_s1_user', 'u1_s1_user', 1),
+(12, '12', 'u2_s2_user', 'u2_s2_user', 1),
+(13, '13', 'u3_s3_user', 'u3_s3_user', 1),
+(14, '14', 'u4_s4_user', 'u4_s4_user', 1),
+(15, '15', 'u5_s5_user', 'u5_s5_user', 1),
+(16, '16', 'u6_s6_user', 'u6_s6_user', 1),
+(17, '17', 'u7_s7_user', 'u7_s7_user', 1),
+(18, '18', 'u8_s8_user', 'u8_s8_user', 1),
+(19, '19', 'u9_s9_user', 'u9_s9_user', 1);
 
 insert into course (name, acronym, coordinator_id, active) values
 ('Software Laboratory' , 'LS', 'T00004', true),

@@ -111,7 +111,7 @@ public class MainController implements ErrorController {
 
     @RequestMapping(value="${api.home}",method=RequestMethod.GET)
     public void getHomeAPI(HttpServletResponse response) {
-        String username = ContainerFactory.getAuthenticatedUser();
+        String username = ContainerFactory.getAuthenticatedUser(jt);
         AuthenticatedUserEntity authenticatedUserEntity = CredentialRepository.getAuthenticatedUserInfo(jt, username);
         AuthenticatedUserDTO authenticatedUserDTO = DTOFactory.convertToDto(authenticatedUserEntity);
 

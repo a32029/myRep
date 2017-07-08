@@ -10,6 +10,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class CredentialRepository {
+    public static String getOpenIdUsername(JdbcTemplate jt, String openId) {
+        String username = null;
+        try {
+            username = jt.queryForObject("SELECT (USERNAME) FROM CREDENTIALS WHERE OPENID=(?)",
+                    new Object[] { openId }, String.class);
+        } catch (EmptyResultDataAccessException e) {}
+        return username;
+    }
 
     public static AuthenticatedUserEntity getAuthenticatedUserInfo(JdbcTemplate jt, String username) {
         String teacherId = null;

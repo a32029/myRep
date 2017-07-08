@@ -1,45 +1,59 @@
 package pt.isel.daw.app;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import static org.springframework.http.HttpMethod.GET;
 
-import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
+import pt.isel.daw.app.openid.OpenIDConnectAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    @Qualifier("dsUsers")
-    DataSource dataSource;
+    private final String LOGIN_URL = "/login";
+
+    @Bean
+    public AuthenticationEntryPoint authenticationEntryPoint() {
+        return new LoginUrlAuthenticationEntryPoint(LOGIN_URL);
+    }
+
+    @Bean
+    public OpenIDConnectAuthenticationFilter openIdConnectAuthenticationFilter() {
+        return new OpenIDConnectAuthenticationFilter(LOGIN_URL);
+    }
+
+    @Bean
+    @Primary
+    @Qualifier
+    public OAuth2ClientContextFilter oAuth2ClientContextFilter() {
+        return new OAuth2ClientContextFilter();
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN") //role should not start with 'ROLE_' since it is automatically inserted. Got 'ROLE_ADMIN'
-                .antMatchers("/api/admin/**").hasRole("ADMIN")
-                .antMatchers("/html/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/api/user/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/html/user/**").hasAnyRole("ADMIN", "USER")
-                .anyRequest().permitAll()
-                .and()
-                .csrf()      //se não for introduzido .csrf().disable() é lançado um erro:
-                .disable()   //"status":403,"error":"Forbidden","message":"Could not verify the provided CSRF token because your session was not found."
-                .httpBasic();
-    }
+        http.addFilterAfter(oAuth2ClientContextFilter(), AbstractPreAuthenticatedProcessingFilter.class)
+                .addFilterAfter(openIdConnectAuthenticationFilter(), OAuth2ClientContextFilter.class)
+                .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint())
+                .and().authorizeRequests()
+                .antMatchers("/admin/**").authenticated()
+                .antMatchers("/api/admin/**").authenticated()
+                .antMatchers("/html/admin/**").authenticated()
+                .antMatchers("/user/**").authenticated()
+                .antMatchers("/api/user/**").authenticated()
+                .antMatchers("/html/user/**").authenticated()
+                .anyRequest().permitAll();
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select username, password, enabled from credentials where username=?")
-                .authoritiesByUsernameQuery("select username, role from credentials c, user u where c.user_id = u.user_id and username=?");
+//                .antMatchers(GET, "/").permitAll()
+//                .antMatchers(GET, "/test").authenticated();
     }
 }
