@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AcademicMGMT.iml" filepath="$PROJECT_DIR$/.idea/modules/AcademicMGMT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AcademicMGMT_main.iml" filepath="$PROJECT_DIR$/.idea/modules/AcademicMGMT_main.iml" group="AcademicMGMT" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AcademicMGMT_test.iml" filepath="$PROJECT_DIR$/.idea/modules/AcademicMGMT_test.iml" group="AcademicMGMT" />
+    </modules>
+  </component>
+</project>

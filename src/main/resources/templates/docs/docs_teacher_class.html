@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<h1>Teachers in Class</h1>
+<p>This document was designed to help a client to access a management system via an HTTP API.</p>
+
+<ul>
+    <li>
+        <a name="add_teacher">Add Teacher to Class</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>PUT</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>class_id={class_id}</li>
+                    <li>teacher_id={teacher_id}</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>none</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+    <li><a name="remove_teacher">Remove a Teacher from Class</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>DELETE</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>class_id={class_id}</li>
+                    <li>teacher_id={teacher_id}</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>none</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+    <li><a name="get_teacher">Get Teacher in Class</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>GET</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>class_id={class_id}</li>
+                    <li>teacher_id={teacher_id}</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>JSON Object { "number":teacher_id, "name":teacher_name, "email":teacher_email, "role":( "ROLE_USER" or "ROLE_ADMIN") }</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+    <li><a name="list_teachers">List Teachers in Class</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>GET</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>class_id={class_id}</li>
+                    <li>p={page number}</li>
+                    <li>l={number of rows per page}</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>JSON Object[] [{ "number":teacher_id, "name":teacher_name, "email":teacher_email, "role":( "ROLE_USER" or "ROLE_ADMIN") }]</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>

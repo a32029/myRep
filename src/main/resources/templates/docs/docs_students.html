@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<h1>Students</h1>
+<p>This document was designed to help a client to access a management system via an HTTP API.</p>
+
+<ul>
+    <li>
+        <a name="create_student">Create Student</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>POST</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>JSON Object { "number":student_id, "name":student_name, "email":student_email, "role":( choose "ROLE_USER" or "ROLE_ADMIN") }</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>The Student id.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+    <li><a name="update_student">Update Student</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>POST</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>JSON Object { "number":student_id, "name":student_name, "email":student_email, "role":"ROLE_USER" }</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>The Student id.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+    <li><a name="get_student">Get Student</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>GET</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>student_id={student_id}</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>JSON Object { "number":student_id, "name":student_name, "email":student_email, "role":"ROLE_USER" }</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+    <li><a name="list_students">List Students</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>GET</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>p={page number}</li>
+                    <li>l={number of rows per page}</li>
+                    <li>sp={search parameter}</li>
+                    <li>sp={search value (the character * is a wildcard)}</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>JSON Object[] [{ "number":student_id, "name":student_name, "email":student_email, "role":"ROLE_USER" }]</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>

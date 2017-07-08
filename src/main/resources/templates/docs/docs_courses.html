@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<h1>Courses</h1>
+<p>This document was designed to help a client to access a management system via an HTTP API.</p>
+
+<ul>
+    <li>
+        <a name="create_course">Create Course</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>POST</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>JSON Object { "course_id":course_id, "name":course_name, "acronym":course_acronym, "coordinator_id":(use the pretended Teacher id ), "active":true/false (used to "remove" the course) }</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>The Course id.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+    <li><a name="update_course">Update Course</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>POST</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>JSON Object { "course_id":course_id, "name":course_name, "acronym":course_acronym, "coordinator_id":(use the pretended Teacher id ), "active":true/false (used to "remove" the course) }</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>The Course id.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+	<li><a name="activate_course">Activate Course</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>PUT</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>course_id={course_id}</li>
+                    <li>active={true/false ( enable/disable course )}</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>The Course id.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+    <li><a name="get_course">none</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>GET</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>course_id={course_id}</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>JSON Object { "course_id":course_id, "name":course_name, "acronym":course_acronym, "coordinator_id":(use the pretended Teacher id ), "active":true/false (used to "remove" the course) }</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+    <li><a name="list_courses">List Courses</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>GET</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>p={page number}</li>
+                    <li>l={number of rows per page}</li>
+                    <li>sp={search parameter}</li>
+                    <li>sv={search value (the character * is a wildcard)}</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>JSON Object[] ["course_id":course_id, "name":course_name, "acronym":course_acronym, "coordinator_id":(use the pretended Teacher id ), "active":true/false (used to "remove" the course) }]</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>

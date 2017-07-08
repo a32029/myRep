@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<h1>Classes</h1>
+<p>This document was designed to help a client to access a management system via an HTTP API.</p>
+
+<ul>
+    <li>
+        <a name="create_class">Create Class</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>POST</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>JSON Object { "class_id":class_id, "identifier":identifier, "course_id":course_id, "semester_id":semester_id, "auto_enrollment":true/false (permits students to join a class), "max_students_group":(maximum number of students per group) }</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>The Class id.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+    <li><a name="update_class">Update Class</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>POST</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>JSON Object { "class_id":class_id, "identifier":identifier, "course_id":course_id, "semester_id":semester_id, "auto_enrollment":true/false (permits students to join a class), "max_students_group":(maximum number of students per group) }</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>The Class id.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+    <li><a name="get_class">Get Class</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>GET</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>class_id={class_id}</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>JSON Object { "class_id":class_id, "identifier":identifier, "course_id":course_id, "semester_id":semester_id, "auto_enrollment":true/false (permits students to join a class), "max_students_group":(maximum number of students per group) }</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <h4></h4>
+    <li><a name="list_classes">List Classes</a>
+        <ul>
+            <li>REST method:
+                <ul>
+                    <li>GET</li>
+                </ul>
+            </li>
+            <li>Parameters:
+                <ul>
+                    <li>p={page number}</li>
+                    <li>l={number of rows per page}</li>
+                    <li>sp={search parameter}</li>
+                    <li>sp={search value (the character * is a wildcard)}</li>
+                </ul>
+            </li>
+            <li>Result:
+                <ul>
+                    <li>JSON Object[] [{ "class_id":class_id, "identifier":identifier, "course_id":course_id, "semester_id":semester_id, "auto_enrollment":true/false (permits students to join a class), "max_students_group":(maximum number of students per group) }]</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>

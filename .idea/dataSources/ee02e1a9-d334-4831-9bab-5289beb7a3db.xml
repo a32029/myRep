@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="db">
+  <database-model serializer="dbm" rdbms="HSQLDB" format-version="4.1">
+    <root id="1"/>
+    <database id="2" parent="1" name="PUBLIC">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <schema id="3" parent="2" name="INFORMATION_SCHEMA"/>
+    <schema id="4" parent="2" name="PUBLIC">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="5" parent="2" name="SYSTEM_LOBS"/>
+    <table id="6" parent="4" name="CLASS"/>
+    <table id="7" parent="4" name="CLASSES_STUDENTS"/>
+    <table id="8" parent="4" name="CLASSES_TEACHERS"/>
+    <table id="9" parent="4" name="COURSE"/>
+    <table id="10" parent="4" name="CREDENTIALS"/>
+    <table id="11" parent="4" name="GROUPS"/>
+    <table id="12" parent="4" name="SEMESTER"/>
+    <table id="13" parent="4" name="STUDENT"/>
+    <table id="14" parent="4" name="TEACHER"/>
+    <table id="15" parent="4" name="USER"/>
+    <column id="16" parent="6" name="CLASS_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="6" name="IDENTIFIER">
+      <Position>2</Position>
+      <DataType>VARCHAR(5)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="6" name="COURSE_ACRONYM">
+      <Position>3</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="6" name="SEMESTER_ID">
+      <Position>4</Position>
+      <DataType>VARCHAR(5)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="6" name="AUTO_ENROLLMENT">
+      <Position>5</Position>
+      <DataType>BOOLEAN(0)|16</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="6" name="MAX_STUDENTS_GROUP">
+      <Position>6</Position>
+      <DataType>INTEGER(32)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="6" name="ACTIVE">
+      <Position>7</Position>
+      <DataType>BOOLEAN(0)|16</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="23" parent="6" name="SYS_IDX_SYS_CT_10160_10169">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CLASS_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="24" parent="6" name="PK_CLASS">
+      <ColNames>IDENTIFIER
+COURSE_ACRONYM
+SEMESTER_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="25" parent="6" name="FK4_CLASS">
+      <ColNames>COURSE_ACRONYM</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>COURSE</RefTableName>
+      <RefColNames>ACRONYM</RefColNames>
+    </foreign-key>
+    <foreign-key id="26" parent="6" name="FK3_CLASS">
+      <ColNames>SEMESTER_ID</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>SEMESTER</RefTableName>
+      <RefKeyName>PK_SEMESTER</RefKeyName>
+      <RefColNames>SEMESTER_ID</RefColNames>
+    </foreign-key>
+    <column id="27" parent="7" name="CLASS_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="7" name="STUDENT_ID">
+      <Position>2</Position>
+      <DataType>VARCHAR(6)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="29" parent="7" name="PK_CLASSES_STUDENTS">
+      <ColNames>CLASS_ID
+STUDENT_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="30" parent="7" name="FK1_CLASSES_STUDENTS">
+      <ColNames>CLASS_ID</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>CLASS</RefTableName>
+      <RefColNames>CLASS_ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="31" parent="7" name="FK2_CLASSES_STUDENTS">
+      <ColNames>STUDENT_ID</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>STUDENT</RefTableName>
+      <RefKeyName>PK_STUDENT</RefKeyName>
+      <RefColNames>STUDENT_ID</RefColNames>
+    </foreign-key>
+    <column id="32" parent="8" name="CLASS_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="8" name="TEACHER_ID">
+      <Position>2</Position>
+      <DataType>VARCHAR(6)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="34" parent="8" name="PK_CLASSES_TEACHERS">
+      <ColNames>CLASS_ID
+TEACHER_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="35" parent="8" name="FK1_CLASSES_TEACHERS">
+      <ColNames>CLASS_ID</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>CLASS</RefTableName>
+      <RefColNames>CLASS_ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="36" parent="8" name="FK2_CLASSES_TEACHERS">
+      <ColNames>TEACHER_ID</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>TEACHER</RefTableName>
+      <RefKeyName>PK_TEACHER</RefKeyName>
+      <RefColNames>TEACHER_ID</RefColNames>
+    </foreign-key>
+    <column id="37" parent="9" name="COURSE_ID">
+      <Position>1</Position>
+      <DataType>INTEGER(32)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="9" name="NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR(100)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="9" name="ACRONYM">
+      <Position>3</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="9" name="COORDINATOR_ID">
+      <Position>4</Position>
+      <DataType>VARCHAR(6)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="9" name="ACTIVE">
+      <Position>5</Position>
+      <DataType>BOOLEAN(0)|16</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="42" parent="9" name="SYS_IDX_SYS_CT_10138_10147">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NAME</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="43" parent="9" name="SYS_IDX_SYS_CT_10139_10148">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ACRONYM</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="44" parent="9" name="PK_COURSE">
+      <ColNames>COURSE_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="9" name="FK_COURSE">
+      <ColNames>COORDINATOR_ID</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>TEACHER</RefTableName>
+      <RefKeyName>PK_TEACHER</RefKeyName>
+      <RefColNames>TEACHER_ID</RefColNames>
+    </foreign-key>
+    <column id="46" parent="10" name="USER_ID">
+      <Position>1</Position>
+      <DataType>INTEGER(32)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="10" name="USERNAME">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="10" name="PASSWORD">
+      <Position>3</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="10" name="ENABLED">
+      <Position>4</Position>
+      <DataType>TINYINT(8)|-6</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="50" parent="10" name="SYS_IDX_SYS_CT_10124_10130">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>USERNAME</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="51" parent="10" name="PK_CREDENTIALS">
+      <ColNames>USER_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="52" parent="10" name="FK_USER">
+      <ColNames>USER_ID</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>USER</RefTableName>
+      <RefKeyName>PK_USER</RefKeyName>
+      <RefColNames>USER_ID</RefColNames>
+    </foreign-key>
+    <column id="53" parent="11" name="CLASS_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="11" name="GROUP_ID">
+      <Position>2</Position>
+      <DataType>INTEGER(32)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="11" name="STUDENT_ID">
+      <Position>3</Position>
+      <DataType>VARCHAR(6)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="56" parent="11" name="PK_GROUPS">
+      <ColNames>CLASS_ID
+STUDENT_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="57" parent="11" name="FK1_GROUPS">
+      <ColNames>CLASS_ID</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>CLASS</RefTableName>
+      <RefColNames>CLASS_ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="58" parent="11" name="FK2_GROUPS">
+      <ColNames>STUDENT_ID</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>STUDENT</RefTableName>
+      <RefKeyName>PK_STUDENT</RefKeyName>
+      <RefColNames>STUDENT_ID</RefColNames>
+    </foreign-key>
+    <column id="59" parent="12" name="SEMESTER_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR(5)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="60" parent="12" name="PK_SEMESTER">
+      <ColNames>SEMESTER_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="61" parent="13" name="STUDENT_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR(6)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="13" name="USER_ID">
+      <Position>2</Position>
+      <DataType>INTEGER(32)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="63" parent="13" name="PK_STUDENT">
+      <ColNames>STUDENT_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="64" parent="13" name="FK_STUDENT">
+      <ColNames>USER_ID</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>USER</RefTableName>
+      <RefKeyName>PK_USER</RefKeyName>
+      <RefColNames>USER_ID</RefColNames>
+    </foreign-key>
+    <column id="65" parent="14" name="TEACHER_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR(6)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="14" name="USER_ID">
+      <Position>2</Position>
+      <DataType>INTEGER(32)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="67" parent="14" name="PK_TEACHER">
+      <ColNames>TEACHER_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="68" parent="14" name="FK_TEACHER">
+      <ColNames>USER_ID</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>USER</RefTableName>
+      <RefKeyName>PK_USER</RefKeyName>
+      <RefColNames>USER_ID</RefColNames>
+    </foreign-key>
+    <column id="69" parent="15" name="USER_ID">
+      <Position>1</Position>
+      <DataType>INTEGER(32)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="70" parent="15" name="NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="15" name="EMAIL">
+      <Position>3</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="72" parent="15" name="ROLE">
+      <Position>4</Position>
+      <DataType>VARCHAR(45)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="73" parent="15" name="SYS_IDX_SYS_CT_10095_10101">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>EMAIL</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="74" parent="15" name="PK_USER">
+      <ColNames>USER_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
